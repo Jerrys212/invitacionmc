@@ -1,18 +1,5 @@
-import Countdown from "@/src/components/Countdown";
-import DressCode from "@/src/components/DressCode";
-import Hero from "@/src/components/Hero";
-import Parents from "@/src/components/Parents";
+import { redirect } from "next/navigation";
 
 export default function Home() {
-    return (
-        <>
-            <Hero />
-
-            <Countdown />
-
-            <Parents />
-
-            <DressCode />
-        </>
-    );
+    redirect("/1");
 }
