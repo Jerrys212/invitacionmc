@@ -1,6 +1,20 @@
 import type { Metadata } from "next";
-import { Great_Vibes, Cormorant_Garamond, Amiri } from "next/font/google";
+import { Great_Vibes, Cormorant_Garamond, Amiri, Playfair_Display, Lora } from "next/font/google";
 import "./globals.css";
+
+const playfair = Playfair_Display({
+    subsets: ["latin"],
+    style: ["normal", "italic"],
+    weight: ["400", "700"],
+    variable: "--font-playfair-display",
+});
+
+const lora = Lora({
+    subsets: ["latin"],
+    style: ["normal", "italic"],
+    weight: ["400", "700"],
+    variable: "--font-lora",
+});
 
 const greatVibes = Great_Vibes({
     weight: "400",
@@ -29,7 +43,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
     return (
         <html
             lang="en"
-            className={`${greatVibes.variable} ${cormorant.variable} ${amiri.variable} h-full antialiased`}
+            className={`${greatVibes.variable} ${cormorant.variable} ${amiri.variable} ${playfair.variable} ${lora.variable} h-full antialiased`}
         >
             <body className="min-h-full flex flex-col">{children}</body>
         </html>

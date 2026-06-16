@@ -1,63 +1,82 @@
-import { Users, User } from "lucide-react";
-import WheaterBar from "./WheaterBar";
+import { OrnamentFrame } from "./Ornament";
+import Image from "next/image";
 
 export default function DressCode() {
     return (
-        <section className="min-h-screen w-full bg-burgundy-dark flex flex-col items-center justify-center px-8 py-24 gap-16">
-            {/* título */}
-            <div className="flex flex-col items-center gap-3 text-center">
-                <p className="font-serif text-ivory/40 text-sm md:text-xl tracking-[0.4em] uppercase">
-                    Código de
-                </p>
-                <h2 className="font-display text-ivory text-5xl md:text-6xl lg:text-7xl">
-                    Vestimenta
-                </h2>
-                <div className="h-px w-16 bg-ivory/30 mt-2" />
-            </div>
+        <section
+            className="min-h-screen w-full flex items-center justify-center px-4 sm:px-8 py-12 sm:py-16"
+            style={{
+                backgroundImage: "url('/bg3.jpg')",
+                backgroundSize: "cover",
+                backgroundPosition: "center",
+            }}
+        >
+            {/* Desktop / tablet: 1920×1280 */}
+            <Image
+                src="/dresscodedk.png"
+                width={1920}
+                height={1280}
+                alt="imagen dresscode"
+                sizes="(max-width: 1024px) 70vw, 800px"
+                className="hidden sm:block w-full max-w-3xl h-auto object-contain"
+                priority
+            />
 
-            <div className="border border-ivory/20 px-10 py-3">
-                <p className="font-serif text-ivory text-sm md:text-xl tracking-[0.4em] uppercase">
-                    Formal
-                </p>
-            </div>
+            {/* Mobile: 1280×1920 */}
+            <Image
+                src="/dresscodemb.png"
+                width={1280}
+                height={1920}
+                alt="imagen dresscode"
+                sizes="90vw"
+                className="block sm:hidden w-full max-w-sm h-auto object-contain"
+                priority
+            />
 
-            <div className="flex flex-col gap-6 items-start w-full max-w-3xl">
-                <div className="flex items-center gap-4">
-                    <User size={20} className="text-ivory/60" />
-                    <p className="font-serif text-ivory tracking-widest uppercase text-lg md:text-2xl">
-                        Mujeres: Vestido Largo
-                    </p>
+            {/* <div
+                className="relative w-full max-w-4xl px-8 sm:px-14 py-14 sm:py-20 flex flex-col items-center gap-10 sm:gap-14 overflow-hidden"
+                style={{
+                    backgroundImage: "url('/bg1.png')",
+                    backgroundSize: "cover",
+                    backgroundPosition: "center",
+                }}
+            >
+       
+                <div className="flex flex-col items-center gap-3">
+                    <h2 className="font-serif text-black/80 text-4xl sm:text-6xl md:text-7xl tracking-[0.2em] sm:tracking-[0.3em] uppercase text-center">
+                        Dress Code
+                    </h2>
+                    <div className="flex items-center gap-2">
+                        <div className="h-px w-14 bg-black/30" />
+                        <span className="font-great-vibes text-black/40 text-2xl">❧</span>
+                        <div className="h-px w-14 bg-black/30" />
+                    </div>
                 </div>
-                <div className="flex items-center gap-4">
-                    <Users size={20} className="text-ivory/60" />
-                    <p className="font-serif text-ivory tracking-widest uppercase text-lg md:text-2xl">
-                        Hombres: Traje
-                    </p>
-                </div>
-            </div>
 
-            <div className="flex items-center gap-4 w-full max-w-3xl">
-                <div className="h-px flex-1 bg-ivory/20" />
-                <p className="font-serif text-ivory/30 text-3xl">M&C</p>
-                <div className="h-px flex-1 bg-ivory/20" />
-            </div>
+             
+                <div className="flex flex-col md:flex-row items-center gap-10 md:gap-10 w-full">
+          
+                    <div className="relative w-56 sm:w-80 md:w-96 h-96 sm:h-[28rem] shrink-0">
+                        <Image src="/dresscode.png" alt="Dress code pareja" fill className="object-contain" />
+                    </div>
 
-            <div className="flex flex-col md:flex-row gap-4 w-full max-w-3xl">
-                <div className="border border-ivory/20 px-8 py-6 text-center flex-1">
-                    <p className="font-serif text-ivory/70 text-lg md:text-xl leading-relaxed italic">
-                        Los colores <span className="text-ivory font-semibold">blanco, beige</span>{" "}
-                        y tonos similares están reservados para la novia.
-                    </p>
-                </div>
-                <div className="border border-ivory/20 px-8 py-6 text-center flex-1">
-                    <p className="font-serif text-ivory/70 text-lg md:text-xl leading-relaxed italic">
-                        Los colores <span className="text-ivory font-semibold">rojo y tinto</span>{" "}
-                        están reservados para las damas de honor.
-                    </p>
-                </div>
-            </div>
+                
+                    <div className="flex flex-col items-center gap-6 flex-1 w-full min-w-0">
+                     
+                        <div className="flex flex-col items-center w-full">
+                            <OrnamentFrame className="w-56 sm:w-64 opacity-50" />
+                            <p className="font-serif text-black/80 text-2xl sm:text-3xl tracking-[0.3em] uppercase -my-8">Formal</p>
+                            <OrnamentFrame className="w-56 sm:w-64 opacity-50 rotate-180" />
+                        </div>
 
-            <WheaterBar />
+              
+                        <ul className="font-serif text-black/70 text-lg sm:text-xl md:text-2xl space-y-5 list-disc list-inside text-center md:text-left w-full">
+                            <li>Los colores blanco, beige y similares se reservan para la novia.</li>
+                            <li>El color borgoña se reserva para damas y caballeros de honor.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div> */}
         </section>
     );
 }

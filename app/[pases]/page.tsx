@@ -1,4 +1,3 @@
-import Countdown from "@/src/components/Countdown";
 import DressCode from "@/src/components/DressCode";
 import Footer from "@/src/components/Footer";
 import Gallery from "@/src/components/Galery";
@@ -22,8 +21,6 @@ export default async function Home({ params }: Props) {
     return (
         <>
             <Hero />
-
-            <Countdown />
 
             <Parents />
 

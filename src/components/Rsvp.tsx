@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Check, X, Send } from "lucide-react";
+import { Check, X, Send, AlertCircle } from "lucide-react";
 import { submitRsvp } from "@/app/actions/rsvp-action";
 
 interface RsvpProps {
@@ -49,6 +49,21 @@ export default function Rsvp({ pases }: RsvpProps) {
                 <p className="font-serif text-burgundy-dark text-3xl md:text-4xl lg:text-5xl tracking-widest uppercase">
                     {pases + 1} {pases + 1 === 1 ? "Pase" : "Pases"}
                 </p>
+            </div>
+
+            {/* notas importantes */}
+            <div className="flex flex-col gap-6 border border-burgundy-dark/20 px-8 py-8 w-full max-w-2xl">
+                <div className="flex items-start gap-4">
+                    <AlertCircle size={22} className="text-burgundy-dark/50 shrink-0 mt-1" strokeWidth={1.5} />
+                    <p className="font-serif italic text-burgundy-dark text-lg md:text-xl leading-relaxed">
+                        Queremos compartir este día tan especial contigo. Por favor, considera lo siguiente:
+                    </p>
+                </div>
+                <ul className="font-serif text-burgundy-dark/80 text-base md:text-lg leading-relaxed space-y-4 list-disc list-inside marker:text-burgundy-dark/40">
+                    <li>Evento exclusivo para adultos (no se permiten niños).</li>
+                    <li>Cada invitado ha sido elegido con mucho cariño, por lo que los pases son personales e intransferibles.</li>
+                    <li>En caso de no poder asistir, te pedimos lo comuniques lo más pronto posible aún si ya habías confirmado.</li>
+                </ul>
             </div>
 
             <div className="flex flex-col gap-8 w-full max-w-2xl">

@@ -1,6 +1,8 @@
 @import "tailwindcss";
 
 @theme {
+    --font-playfair: var(--font-playfair-display); 
+    --font-lora: var(--font-lora); 
     --font-display: var(--font-great-vibes);
     --font-serif: var(--font-cormorant);
     --font-body: var(--font-amiri);
