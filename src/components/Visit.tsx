@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { MapPin } from "lucide-react";
 import Link from "next/link";
+import Reveal from "./Reveal";
 
 const places = [
     {
@@ -36,19 +37,30 @@ export default function Visit() {
     return (
         <section className="min-h-screen w-full bg-ivory/80 flex flex-col items-center justify-center px-8 py-24 gap-16">
             {/* título */}
-            <div className="flex flex-col items-center gap-3 text-center">
+            <Reveal variant="up" className="flex flex-col items-center gap-3 text-center">
                 <p className="font-serif text-burgundy-dark text-sm md:text-xl tracking-[0.4em] uppercase">Aprovecha tu visita</p>
                 <h2 className="font-serif text-burgundy-dark text-3xl md:text-4xl lg:text-5xl tracking-widest uppercase">Qué visitar en CDMX</h2>
-                <div className="h-px w-16 bg-burgundy-dark/30 mt-2" />
-            </div>
+                <Reveal variant="line" delay={250} className="h-px w-16 bg-burgundy-dark/30 mt-2" />
+            </Reveal>
 
             {/* grid */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 w-full max-w-5xl">
-                {places.map((place) => (
-                    <div key={place.name} className="flex flex-col bg-ivory border border-burgundy-dark/10">
+                {places.map((place, i) => (
+                    <Reveal
+                        key={place.name}
+                        variant="up"
+                        delay={i * 100}
+                        className="flex flex-col bg-ivory border border-burgundy-dark/10 hover-lift"
+                    >
                         {/* imagen */}
-                        <div className="relative w-full h-64">
-                            <Image src={place.image} alt={place.name} fill sizes="(max-width: 768px) 100vw, 50vw" className="object-cover" />
+                        <div className="relative w-full h-64 overflow-hidden">
+                            <Image
+                                src={place.image}
+                                alt={place.name}
+                                fill
+                                sizes="(max-width: 768px) 100vw, 50vw"
+                                className="object-cover transition-transform duration-700 ease-out hover:scale-105"
+                            />
                         </div>
 
                         {/* contenido */}
@@ -59,13 +71,13 @@ export default function Visit() {
                                 href={place.maps}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="flex items-center gap-2 text-burgundy-dark hover:text-burgundy-dark transition-colors duration-300 mt-2"
+                                className="link-underline flex items-center gap-2 w-fit text-burgundy-dark hover:text-burgundy-dark transition-colors duration-300 mt-2"
                             >
                                 <MapPin size={16} />
                                 <span className="font-serif text-xs tracking-[0.3em] uppercase">Ver en Google Maps</span>
                             </Link>
                         </div>
-                    </div>
+                    </Reveal>
                 ))}
             </div>
         </section>
