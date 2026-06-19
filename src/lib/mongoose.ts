@@ -19,11 +19,24 @@ declare global {
 const cached: MongooseCache = global.mongooseCache ?? { conn: null, promise: null };
 global.mongooseCache = cached;
 
+const MAX_RETRIES = 3;
+const RETRY_DELAY_MS = 1000;
+
+async function connectWithRetry(attempt = 1): Promise<Mongoose> {
+    try {
+        return await mongoose.connect(MONGODB_URI, { family: 4 });
+    } catch (err) {
+        if (attempt >= MAX_RETRIES) throw err;
+        await new Promise((resolve) => setTimeout(resolve, RETRY_DELAY_MS * attempt));
+        return connectWithRetry(attempt + 1);
+    }
+}
+
 export async function connectDB() {
     if (cached.conn) return cached.conn;
 
     if (!cached.promise) {
-        cached.promise = mongoose.connect(MONGODB_URI, { family: 4 }).catch((err) => {
+        cached.promise = connectWithRetry().catch((err) => {
             // Si la conexión falla (ej. corte momentáneo de DNS), no dejamos la promesa
             // rechazada en caché — así la siguiente llamada reintenta en vez de fallar para siempre.
             cached.promise = null;
