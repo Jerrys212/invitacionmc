@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Reveal from "./Reveal";
 
 const images = [
     "https://res.cloudinary.com/dsrxyg5rn/image/upload/v1780187265/Album_078_hl5akk.avif",
@@ -15,11 +16,11 @@ const images = [
 export default function Gallery() {
     return (
         <section className="min-h-screen w-full bg-ivory flex flex-col items-center justify-center px-8 py-24 gap-16">
-            <div className="flex flex-col items-center gap-3 text-center">
+            <Reveal variant="up" className="flex flex-col items-center gap-3 text-center">
                 <p className="font-serif text-burgundy-dark/40 text-sm md:text-xl lg:text-2xl tracking-[0.4em] uppercase">Nuestros</p>
                 <h2 className="font-display text-burgundy-dark text-5xl md:text-6xl lg:text-7xl">Momentos</h2>
-                <div className="h-px w-16 bg-burgundy-dark/30 mt-2" />
-            </div>
+                <Reveal variant="line" delay={250} className="h-px w-16 bg-burgundy-dark/30 mt-2" />
+            </Reveal>
 
             <div
                 className="w-full max-w-5xl grid gap-2"
@@ -44,22 +45,28 @@ export default function Gallery() {
                     { area: "g", src: images[6] },
                     { area: "h", src: images[7] },
                     { area: "i", src: images[8] },
-                ].map(({ area, src }) => (
-                    <div key={area} className="relative overflow-hidden" style={{ gridArea: area }}>
+                ].map(({ area, src }, i) => (
+                    <Reveal
+                        key={area}
+                        variant="scale"
+                        delay={i * 60}
+                        className="relative overflow-hidden"
+                        style={{ gridArea: area }}
+                    >
                         <Image
                             src={src}
                             alt="Momento"
                             fill
                             sizes="(max-width: 768px) 100vw, 50vw"
-                            className="object-cover hover:scale-105 transition-transform duration-700"
+                            className="object-cover hover:scale-105 transition-transform duration-700 ease-out"
                         />
-                    </div>
+                    </Reveal>
                 ))}
             </div>
 
-            <p className="font-serif text-burgundy-dark/40 text-lg md:text-2xl italic text-center">
+            <Reveal variant="fade" className="font-serif text-burgundy-dark/40 text-lg md:text-2xl italic text-center">
                 Cada momento compartido es un recuerdo que atesoramos
-            </p>
+            </Reveal>
         </section>
     );
 }
