@@ -8,7 +8,7 @@ export async function sendRsvpNotification(rsvp: RsvpInput): Promise<void> {
     const acompañantesTexto = rsvp.acompañantes.length > 0 ? rsvp.acompañantes.join(", ") : "Ninguno";
 
     await getTransporter().sendMail({
-        from: `"Invitación MC" <${process.env.SMTP_USER}>`,
+        from: `"Invitación MC" <${process.env.SMTP_FROM}>`,
         to: NOTIFICATION_EMAIL,
         subject: `Nueva confirmación de asistencia: ${rsvp.nombre}`,
         text: [
