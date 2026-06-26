@@ -1,7 +1,11 @@
+"use client";
+
 import { Heart } from "lucide-react";
+import { useLanguage } from "@/src/contexts/LanguageContext";
 import Reveal from "./Reveal";
 
 export default function Footer() {
+    const { t } = useLanguage();
     const currentYear = new Date().getFullYear();
 
     return (
@@ -15,7 +19,7 @@ export default function Footer() {
 
             {/* contenido */}
             <Reveal variant="up" delay={150} className="flex flex-col items-center gap-4 text-center">
-                <p className="font-serif text-ivory/60 text-lg md:text-2xl italic">Gracias por ser parte de este día tan especial</p>
+                <p className="font-serif text-ivory/60 text-lg md:text-2xl italic">{t.footer.thanks}</p>
 
                 <div className="flex gap-2">
                     <div className="w-1.5 h-1.5 rounded-full bg-ivory/20" />
@@ -27,7 +31,7 @@ export default function Footer() {
 
                 <p className="font-serif text-ivory/30 text-sm tracking-[0.3em] uppercase">Gerardo García &copy; {currentYear}</p>
 
-                <p className="font-serif text-ivory/20 text-sm italic">Hecho con amor y dedicación</p>
+                <p className="font-serif text-ivory/20 text-sm italic">{t.footer.madeWith}</p>
             </Reveal>
         </footer>
     );

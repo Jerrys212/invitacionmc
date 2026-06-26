@@ -1,4 +1,7 @@
+"use client";
+
 import Image from "next/image";
+import { useLanguage } from "@/src/contexts/LanguageContext";
 import Reveal from "./Reveal";
 
 const images = [
@@ -14,11 +17,12 @@ const images = [
 ];
 
 export default function Gallery() {
+    const { t } = useLanguage();
     return (
         <section className="min-h-screen w-full bg-ivory flex flex-col items-center justify-center px-8 py-24 gap-16">
             <Reveal variant="up" className="flex flex-col items-center gap-3 text-center">
-                <p className="font-serif text-burgundy-dark/40 text-sm md:text-xl lg:text-2xl tracking-[0.4em] uppercase">Nuestros</p>
-                <h2 className="font-display text-burgundy-dark text-5xl md:text-6xl lg:text-7xl">Momentos</h2>
+                <p className="font-serif text-burgundy-dark/40 text-sm md:text-xl lg:text-2xl tracking-[0.4em] uppercase">{t.gallery.eyebrow}</p>
+                <h2 className="font-display text-burgundy-dark text-5xl md:text-6xl lg:text-7xl">{t.gallery.heading}</h2>
                 <Reveal variant="line" delay={250} className="h-px w-16 bg-burgundy-dark/30 mt-2" />
             </Reveal>
 
@@ -65,7 +69,7 @@ export default function Gallery() {
             </div>
 
             <Reveal variant="fade" className="font-serif text-burgundy-dark/40 text-lg md:text-2xl italic text-center">
-                Cada momento compartido es un recuerdo que atesoramos
+                {t.gallery.caption}
             </Reveal>
         </section>
     );
