@@ -1,4 +1,9 @@
+"use client";
+
+import { useLanguage } from "@/src/contexts/LanguageContext";
+
 export default function Parents() {
+    const { t } = useLanguage();
     return (
         <section className="min-h-screen w-full bg-burgundy-dark flex flex-col items-center justify-center px-8 py-24">
             {/* Tarjeta con textura bg1 */}
@@ -12,7 +17,7 @@ export default function Parents() {
             >
                 {/* Título */}
                 <div className="flex flex-col items-center gap-3 text-center">
-                    <p className="font-serif italic text-black/70 text-2xl md:text-3xl">Con la bendición de nuestras familias</p>
+                    <p className="font-serif italic text-black/70 text-2xl md:text-3xl">{t.parents.blessing}</p>
                     {/* Separador ornamental */}
                     <div className="flex items-center gap-2 text-black/40">
                         <div className="h-px w-10 bg-black/30" />

@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import { Play, Pause } from "lucide-react";
+import { useLanguage } from "@/src/contexts/LanguageContext";
 
 const WEDDING_DATE = new Date("2026-12-19T00:00:00");
 
@@ -19,6 +20,7 @@ function getTimeLeft() {
 }
 
 export default function Hero() {
+    const { t } = useLanguage();
     const [time, setTime] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
     const [playing, setPlaying] = useState(false);
     const [audio] = useState(() =>
@@ -41,10 +43,10 @@ export default function Hero() {
     }
 
     const units = [
-        { value: time.days, label: "DÍAS" },
-        { value: time.hours, label: "HRS" },
-        { value: time.minutes, label: "MIN" },
-        { value: time.seconds, label: "SEG" },
+        { value: time.days, label: t.hero.days },
+        { value: time.hours, label: t.hero.hrs },
+        { value: time.minutes, label: t.hero.min },
+        { value: time.seconds, label: t.hero.sec },
     ];
 
     return (
@@ -86,7 +88,7 @@ export default function Hero() {
                         >
                             {playing ? <Pause size={14} /> : <Play size={14} />}
                         </button>
-                        <p className="font-serif text-white/80 text-lg md:text-xl tracking-[0.3em]">19 - diciembre - 2026</p>
+                        <p className="font-serif text-white/80 text-lg md:text-xl tracking-[0.3em]">{t.hero.date}</p>
                     </div>
 
                     {/* Línea divisora */}
