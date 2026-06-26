@@ -1,5 +1,6 @@
 import { OrnamentFrame } from "./Ornament";
 import Image from "next/image";
+import Reveal from "./Reveal";
 
 export default function DressCode() {
     return (
@@ -12,26 +13,30 @@ export default function DressCode() {
             }}
         >
             {/* Desktop / tablet: 1920×1280 */}
-            <Image
-                src="/dresscodedk.png"
-                width={1920}
-                height={1280}
-                alt="imagen dresscode"
-                sizes="(max-width: 1024px) 70vw, 800px"
-                className="hidden sm:block w-full max-w-3xl h-auto object-contain"
-                priority
-            />
+            <Reveal variant="scale" className="hidden sm:block w-full max-w-3xl">
+                <Image
+                    src="/dresscodedk.png"
+                    width={1920}
+                    height={1280}
+                    alt="imagen dresscode"
+                    sizes="(max-width: 1024px) 70vw, 800px"
+                    className="w-full h-auto object-contain"
+                    priority
+                />
+            </Reveal>
 
             {/* Mobile: 1280×1920 */}
-            <Image
-                src="/dresscodemb.png"
-                width={1280}
-                height={1920}
-                alt="imagen dresscode"
-                sizes="90vw"
-                className="block sm:hidden w-full max-w-sm h-auto object-contain"
-                priority
-            />
+            <Reveal variant="scale" className="block sm:hidden w-full max-w-sm">
+                <Image
+                    src="/dresscodemb.png"
+                    width={1280}
+                    height={1920}
+                    alt="imagen dresscode"
+                    sizes="90vw"
+                    className="w-full h-auto object-contain"
+                    priority
+                />
+            </Reveal>
 
             {/* <div
                 className="relative w-full max-w-4xl px-8 sm:px-14 py-14 sm:py-20 flex flex-col items-center gap-10 sm:gap-14 overflow-hidden"
