@@ -9,52 +9,57 @@ const HIDDEN: Record<RevealVariant, string> = {
     up: "opacity-0 translate-y-8",
     scale: "opacity-0 scale-95",
     fade: "opacity-0",
-    line: "scale-x-0",
+    line: "origin-left scale-x-0",
 };
 
 const VISIBLE: Record<RevealVariant, string> = {
     up: "opacity-100 translate-y-0",
     scale: "opacity-100 scale-100",
     fade: "opacity-100",
-    line: "scale-x-100",
+    line: "origin-left scale-x-100",
 };
 
 interface RevealProps {
     children?: ReactNode;
     className?: string;
     variant?: RevealVariant;
-    /** Delay in ms applied once the element becomes visible — used to cascade groups of items. */
     delay?: number;
-    /** Animate on mount instead of waiting for scroll — use for above-the-fold content. */
     immediate?: boolean;
     style?: CSSProperties;
 }
 
-/**
- * Scroll-triggered fade/scale reveal. Animates opacity + transform only (GPU
- * compositing, no layout/paint cost) and fires a single IntersectionObserver
- * callback per element, then disconnects — negligible runtime overhead.
- */
 export default function Reveal({ children, className = "", variant = "up", delay = 0, immediate = false, style }: RevealProps) {
     const ref = useRef<HTMLDivElement>(null);
-    const [visible, setVisible] = useState(immediate);
+    const [visible, setVisible] = useState(false);
 
     useEffect(() => {
-        if (immediate) return;
-        const el = ref.current;
-        if (!el) return;
+        let observer: IntersectionObserver | null = null;
 
-        const observer = new IntersectionObserver(
-            ([entry]) => {
-                if (entry.isIntersecting) {
-                    setVisible(true);
-                    observer.disconnect();
-                }
-            },
-            { threshold: 0.15, rootMargin: "0px 0px -10% 0px" },
-        );
-        observer.observe(el);
-        return () => observer.disconnect();
+        const raf = requestAnimationFrame(() => {
+            if (immediate) {
+                setVisible(true);
+                return;
+            }
+
+            const el = ref.current;
+            if (!el) return;
+
+            observer = new IntersectionObserver(
+                ([entry]) => {
+                    if (entry.isIntersecting) {
+                        setVisible(true);
+                        observer?.disconnect();
+                    }
+                },
+                { threshold: 0.15, rootMargin: "0px 0px -10% 0px" },
+            );
+            observer.observe(el);
+        });
+
+        return () => {
+            cancelAnimationFrame(raf);
+            observer?.disconnect();
+        };
     }, [immediate]);
 
     return (
