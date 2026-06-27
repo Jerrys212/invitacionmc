@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import { Great_Vibes, Cormorant_Garamond, Amiri, Playfair_Display, Lora } from "next/font/google";
+import { LanguageProvider } from "@/src/contexts/LanguageContext";
+import LanguageToggle from "@/src/components/LanguageToggle";
 import "./globals.css";
 
 const playfair = Playfair_Display({
@@ -45,7 +47,12 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
             lang="en"
             className={`${greatVibes.variable} ${cormorant.variable} ${amiri.variable} ${playfair.variable} ${lora.variable} h-full antialiased`}
         >
-            <body className="min-h-full flex flex-col">{children}</body>
+            <body className="min-h-full flex flex-col">
+                    <LanguageProvider>
+                        <LanguageToggle />
+                        {children}
+                    </LanguageProvider>
+                </body>
         </html>
     );
 }
