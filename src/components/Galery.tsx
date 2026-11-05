@@ -10,16 +10,16 @@ const CLOUDINARY = "https://res.cloudinary.com/dsrxyg5rn/image/upload";
 const SWIPE_THRESHOLD = 50;
 
 const photos = [
-    { src: `${CLOUDINARY}/v1793902540/AF_Ball_g3di2w.jpg`, width: 300, height: 681 },
-    { src: `${CLOUDINARY}/v1793902552/Copia_de_Album_078_mgp20c.jpg`, width: 300, height: 450 },
-    { src: `${CLOUDINARY}/v1793902543/London_xxjcyb.jpg`, width: 300, height: 225 },
-    { src: `${CLOUDINARY}/v1793902542/Engagement_t6xyt8.jpg`, width: 300, height: 450 },
-    { src: `${CLOUDINARY}/v1793902542/Disney_wjt0vm.jpg`, width: 300, height: 400 },
-    { src: `${CLOUDINARY}/v1793902542/Greece_d7wtif.jpg`, width: 300, height: 400 },
-    { src: `${CLOUDINARY}/v1793902542/Germany_u1gti5.jpg`, width: 300, height: 400 },
-    { src: `${CLOUDINARY}/v1793902543/Highlands_by0tn2.jpg`, width: 300, height: 400 },
-    { src: `${CLOUDINARY}/v1793902543/Ireland_xgkryy.jpg`, width: 300, height: 400 },
-    { src: `${CLOUDINARY}/v1793902544/Texans_stxfge.jpg`, width: 300, height: 400 },
+    { src: `${CLOUDINARY}/v1793902540/AF_Ball_g3di2w.jpg`, cell: "" },
+    { src: `${CLOUDINARY}/v1793902552/Copia_de_Album_078_mgp20c.jpg`, cell: "aspect-3/4" },
+    { src: `${CLOUDINARY}/v1793902542/Engagement_t6xyt8.jpg`, cell: "aspect-3/4" },
+    { src: `${CLOUDINARY}/v1793902542/Disney_wjt0vm.jpg`, cell: "aspect-3/4" },
+    { src: `${CLOUDINARY}/v1793902543/London_xxjcyb.jpg`, cell: "aspect-4/3 md:aspect-auto" },
+    { src: `${CLOUDINARY}/v1793902542/Greece_d7wtif.jpg`, cell: "aspect-3/4" },
+    { src: `${CLOUDINARY}/v1793902542/Germany_u1gti5.jpg`, cell: "aspect-3/4" },
+    { src: `${CLOUDINARY}/v1793902543/Highlands_by0tn2.jpg`, cell: "aspect-3/4" },
+    { src: `${CLOUDINARY}/v1793902543/Ireland_xgkryy.jpg`, cell: "aspect-3/4" },
+    { src: `${CLOUDINARY}/v1793902544/Texans_stxfge.jpg`, cell: "aspect-3/4" },
 ];
 
 function Lightbox({ index, onClose, onChange }: { index: number; onClose: () => void; onChange: (index: number) => void }) {
@@ -117,17 +117,16 @@ export default function Gallery() {
                 <Reveal variant="line" delay={250} className="h-px w-16 bg-burgundy-dark/30 mt-2" />
             </Reveal>
 
-            <div className="w-full max-w-5xl columns-2 md:columns-3 gap-2">
-                {photos.map(({ src, width, height }, i) => (
-                    <Reveal key={src} variant="scale" delay={i * 60} className="mb-2 break-inside-avoid overflow-hidden">
-                        <button type="button" onClick={() => setOpenIndex(i)} aria-label={`Ver foto ${i + 1}`} className="block w-full">
+            <div className="moments-grid w-full max-w-5xl grid grid-cols-2 md:grid-cols-4 gap-2">
+                {photos.map(({ src, cell }, i) => (
+                    <Reveal key={src} variant="scale" delay={i * 60} className={`relative overflow-hidden ${cell}`} style={{ gridArea: `p${i}` }}>
+                        <button type="button" onClick={() => setOpenIndex(i)} aria-label={`Ver foto ${i + 1}`} className="absolute inset-0 w-full h-full">
                             <Image
                                 src={src}
                                 alt="Momento"
-                                width={width}
-                                height={height}
-                                sizes="(max-width: 768px) 50vw, 340px"
-                                className="w-full h-auto hover:scale-105 transition-transform duration-700 ease-out"
+                                fill
+                                sizes="(max-width: 768px) 50vw, 25vw"
+                                className="object-cover hover:scale-105 transition-transform duration-700 ease-out"
                             />
                         </button>
                     </Reveal>

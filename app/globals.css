@@ -105,6 +105,25 @@
     }
 }
 
+.moments-grid {
+    grid-template-areas:
+        "p0 p1"
+        "p0 p2"
+        "p4 p4"
+        "p3 p5"
+        "p6 p7"
+        "p8 p9";
+}
+
+@media (width >= 48rem) {
+    .moments-grid {
+        grid-template-areas:
+            "p0 p1 p2 p3"
+            "p0 p4 p4 p5"
+            "p6 p7 p8 p9";
+    }
+}
+
 @keyframes soft-ring {
     0% {
         transform: scale(1);
