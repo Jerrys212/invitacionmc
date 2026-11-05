@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Pinyon_Script, Cormorant_Garamond, Amiri, Playfair_Display, Lora } from "next/font/google";
+import { Imperial_Script, Cormorant_Garamond, Amiri, Playfair_Display, Lora } from "next/font/google";
 import { LanguageProvider } from "@/src/contexts/LanguageContext";
 import LanguageToggle from "@/src/components/LanguageToggle";
 import "./globals.css";
@@ -18,10 +18,10 @@ const lora = Lora({
     variable: "--font-lora",
 });
 
-const pinyonScript = Pinyon_Script({
+const imperialScript = Imperial_Script({
     weight: "400",
     subsets: ["latin"],
-    variable: "--font-pinyon-script",
+    variable: "--font-imperial-script",
 });
 
 const cormorant = Cormorant_Garamond({
@@ -45,7 +45,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
     return (
         <html
             lang="en"
-            className={`${pinyonScript.variable} ${cormorant.variable} ${amiri.variable} ${playfair.variable} ${lora.variable} h-full antialiased`}
+            className={`${imperialScript.variable} ${cormorant.variable} ${amiri.variable} ${playfair.variable} ${lora.variable} h-full antialiased`}
         >
             <body className="min-h-full flex flex-col">
                     <LanguageProvider>

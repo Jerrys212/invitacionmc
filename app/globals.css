@@ -3,7 +3,7 @@
 @theme {
     --font-playfair: var(--font-playfair-display); 
     --font-lora: var(--font-lora); 
-    --font-display: var(--font-pinyon-script);
+    --font-display: var(--font-imperial-script);
     --font-serif: var(--font-cormorant);
     --font-body: var(--font-amiri);
     --color-burgundy-dark: #5c1a1a;
