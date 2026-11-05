@@ -79,7 +79,11 @@ export default function Hero() {
             <div className="relative z-10 min-h-screen flex flex-col items-center justify-between py-16 px-6 text-white text-center">
                 {/* Título hero — arriba */}
                 <Reveal immediate variant="up" className="flex flex-col items-center gap-2 mt-6">
-                    <p className="uppercase font-display text-7xl md:text-8xl lg:text-9xl">M&C</p>
+                    <p className="flex items-baseline gap-3 md:gap-5 font-display text-7xl md:text-8xl lg:text-9xl">
+                        <span>M</span>
+                        <span className="text-6xl md:text-7xl lg:text-8xl">&</span>
+                        <span>C</span>
+                    </p>
                     <p className="font-serif text-xl md:text-2xl tracking-widest">Mariana & Christopher</p>
                 </Reveal>
 
