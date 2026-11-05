@@ -2,6 +2,7 @@
 
 import Rsvp from "@/src/lib/models/Rsvp";
 import { connectDB } from "@/src/lib/mongoose";
+import { sendRsvpNotification } from "@/src/lib/mailer";
 import { rsvpInputSchema } from "@/src/lib/types/rsvp";
 import type { ApiResponse } from "@/src/lib/api/response";
 
@@ -16,6 +17,11 @@ export async function submitRsvp(formData: unknown): Promise<ApiResponse<{ id: s
     try {
         await connectDB();
         const created = await Rsvp.create(parsed.data);
+        try {
+            await sendRsvpNotification(parsed.data);
+        } catch (mailError) {
+            console.error("RSVP notification failed", mailError);
+        }
         return { success: true, data: { id: String(created._id) } };
     } catch (err) {
         const message = err instanceof Error ? err.message : "Error inesperado";
