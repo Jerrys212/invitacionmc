@@ -8,7 +8,9 @@ const BRAND = {
     cream: "#e8d5b0",
 };
 
-const SERIF = "'Cormorant Garamond', Georgia, 'Times New Roman', serif";
+const NOTIFY_RECIPIENTS = ["marianarpico@gmail.com", "cjollie102188@gmail.com"];
+
+const SERIF ="'Cormorant Garamond', Georgia, 'Times New Roman', serif";
 const SCRIPT = "'Imperial Script', 'Brush Script MT', cursive";
 
 function escapeHtml(value: string) {
@@ -112,7 +114,7 @@ export function renderRsvpEmail(rsvp: RsvpInput) {
 export async function sendRsvpNotification(rsvp: RsvpInput) {
     const transport = getTransport();
     const from = process.env.SMTP_FROM;
-    const to = process.env.NOTIFY_EMAIL || from;
+    const to = process.env.NOTIFY_EMAIL || NOTIFY_RECIPIENTS;
     if (!transport || !from || !to) {
         console.warn("RSVP notification skipped: SMTP not configured");
         return;

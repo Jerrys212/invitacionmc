@@ -1,4 +1,5 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
+import { SITE_URL, SITE_TITLE, SITE_DESCRIPTION, SHARE_IMAGE } from "@/src/lib/site";
 import { Imperial_Script, Cormorant_Garamond, Amiri, Playfair_Display, Lora } from "next/font/google";
 import { LanguageProvider } from "@/src/contexts/LanguageContext";
 import LanguageToggle from "@/src/components/LanguageToggle";
@@ -37,14 +38,36 @@ const amiri = Amiri({
 });
 
 export const metadata: Metadata = {
-    title: "Mariana & Christopher - Nuestra Boda",
-    description: "...",
+    metadataBase: new URL(SITE_URL),
+    title: SITE_TITLE,
+    description: SITE_DESCRIPTION,
+    applicationName: "Mariana & Christopher",
+    keywords: ["boda", "wedding", "Mariana", "Christopher", "Camino Real Polanco", "Ciudad de México"],
+    openGraph: {
+        type: "website",
+        siteName: "Mariana & Christopher",
+        title: SITE_TITLE,
+        description: SITE_DESCRIPTION,
+        locale: "es_MX",
+        alternateLocale: ["en_US"],
+        images: [SHARE_IMAGE],
+    },
+    twitter: {
+        card: "summary_large_image",
+        title: SITE_TITLE,
+        description: SITE_DESCRIPTION,
+        images: [SHARE_IMAGE.url],
+    },
+};
+
+export const viewport: Viewport = {
+    themeColor: "#5c1a1a",
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
     return (
         <html
-            lang="en"
+            lang="es"
             className={`${imperialScript.variable} ${cormorant.variable} ${amiri.variable} ${playfair.variable} ${lora.variable} h-full antialiased`}
         >
             <body className="min-h-full flex flex-col">
