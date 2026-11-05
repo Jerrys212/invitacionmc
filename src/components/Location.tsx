@@ -36,12 +36,12 @@ export default function Location() {
                     />
                 </Reveal>
 
-                <Reveal variant="up" delay={150} className="flex flex-col gap-6 flex-1 w-full">
-                    <ul className="flex flex-col gap-4">
+                <Reveal variant="up" delay={150} className="flex flex-col gap-6 lg:gap-4 flex-1 w-full">
+                    <ul className="flex flex-col gap-4 lg:gap-3">
                         {details.map(({ icon: Icon, text }) => (
                             <li key={text} className="flex items-start gap-4">
                                 <Icon size={22} strokeWidth={1.5} className="text-burgundy-dark/60 shrink-0 mt-1" />
-                                <span className="font-serif text-burgundy-dark text-xl md:text-2xl">{text}</span>
+                                <span className="font-serif text-burgundy-dark text-xl md:text-2xl lg:text-xl">{text}</span>
                             </li>
                         ))}
                     </ul>
@@ -49,23 +49,23 @@ export default function Location() {
                     <div className="h-px w-16 bg-burgundy-dark/20" />
 
                     <div className="flex flex-col gap-1">
-                        <p className="font-serif text-burgundy-dark/50 text-sm md:text-base tracking-[0.3em] uppercase">{t.location.addressLabel}</p>
-                        <p className="font-serif text-burgundy-dark text-lg md:text-xl leading-relaxed">{t.location.address}</p>
+                        <p className="font-serif text-burgundy-dark/50 text-sm md:text-base lg:text-sm tracking-[0.3em] uppercase">{t.location.addressLabel}</p>
+                        <p className="font-serif text-burgundy-dark text-lg md:text-xl lg:text-lg leading-relaxed lg:leading-snug">{t.location.address}</p>
                     </div>
 
                     <Link
                         href={MAPS_URL}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="btn-shine flex items-center gap-3 border border-burgundy-dark/30 px-8 py-4 text-burgundy-dark font-serif text-sm md:text-lg tracking-[0.4em] uppercase hover:bg-burgundy-dark hover:text-ivory hover:scale-[1.03] active:scale-95 transition-all duration-500 w-fit"
+                        className="btn-shine flex items-center gap-3 border border-burgundy-dark/30 px-8 py-4 lg:py-3 text-burgundy-dark font-serif text-sm md:text-lg lg:text-base tracking-[0.4em] uppercase hover:bg-burgundy-dark hover:text-ivory hover:scale-[1.03] active:scale-95 transition-all duration-500 w-fit"
                     >
                         <MapPin size={16} />
                         {t.location.viewLocation}
                     </Link>
 
-                    <div className="flex items-center gap-4 border border-burgundy-dark/15 px-5 py-4">
-                        <Image src="/estacionamiento.png" alt="" width={512} height={512} className="w-10 h-10 shrink-0 opacity-70" />
-                        <p className="font-serif text-burgundy-dark text-base md:text-lg leading-snug">
+                    <div className="flex items-center gap-4 border border-burgundy-dark/15 px-5 py-4 lg:py-3">
+                        <Image src="/estacionamiento.png" alt="" width={512} height={512} className="w-10 h-10 lg:w-8 lg:h-8 shrink-0 opacity-70" />
+                        <p className="font-serif text-burgundy-dark text-base md:text-lg lg:text-base leading-snug">
                             <span className="uppercase tracking-[0.2em]">{t.location.parkingLabel}:</span> {t.location.parking}
                         </p>
                     </div>

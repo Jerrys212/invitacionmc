@@ -25,10 +25,10 @@ export default function DressCode() {
                         <Image
                             src="/dresscode-couple.png"
                             alt=""
-                            width={440}
-                            height={650}
+                            width={382}
+                            height={604}
                             sizes="(max-width: 640px) 12rem, 320px"
-                            className="w-full h-auto mix-blend-multiply"
+                            className="w-full h-auto opacity-90"
                         />
                     </div>
 
