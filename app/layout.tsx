@@ -45,6 +45,7 @@ export const metadata: Metadata = {
     keywords: ["boda", "wedding", "Mariana", "Christopher", "Camino Real Polanco", "Ciudad de México"],
     openGraph: {
         type: "website",
+        url: SITE_URL,
         siteName: "Mariana & Christopher",
         title: SITE_TITLE,
         description: SITE_DESCRIPTION,
