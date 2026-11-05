@@ -86,25 +86,30 @@ export default function Hero() {
                 {/* Contador — abajo */}
                 <Reveal immediate variant="up" delay={200} className="flex flex-col items-center gap-6 mb-4">
                     {/* Fecha + botón play */}
-                    <button
-                        type="button"
-                        onClick={togglePlay}
-                        aria-label={playing ? t.hero.pauseSong : t.hero.playSong}
-                        className="group flex items-center gap-3 rounded-full border border-white/60 bg-white/10 backdrop-blur-sm pl-2 pr-5 py-2 text-white hover:bg-white/20 hover:border-white hover:scale-105 active:scale-95 transition-all duration-300"
-                    >
-                        <span className="relative flex w-10 h-10 items-center justify-center">
-                            {!playing && <span className="absolute inset-0 rounded-full bg-white/40 animate-ping" />}
-                            <span className="relative flex w-10 h-10 items-center justify-center rounded-full bg-white text-burgundy-dark">
-                                {playing ? <Pause size={16} fill="currentColor" /> : <Play size={16} fill="currentColor" className="ml-0.5" />}
-                            </span>
-                        </span>
-                        <span className="flex items-center gap-2 font-serif text-sm md:text-base tracking-[0.2em] uppercase">
-                            {playing ? <Music size={14} className="animate-pulse" /> : null}
+                    <div className="flex flex-col items-center gap-2">
+                        <div className="flex items-center gap-4">
+                            <button
+                                type="button"
+                                onClick={togglePlay}
+                                aria-label={playing ? t.hero.pauseSong : t.hero.playSong}
+                                className="relative w-10 h-10 rounded-full border border-white/60 flex items-center justify-center text-white hover:border-white hover:bg-white/10 hover:scale-110 active:scale-95 transition-all duration-300"
+                            >
+                                {!playing && <span className="absolute inset-0 rounded-full border border-white/60 animate-soft-ring" />}
+                                {playing ? <Pause size={14} /> : <Play size={14} className="ml-0.5" />}
+                            </button>
+                            <p className="font-serif text-white/80 text-lg md:text-xl tracking-[0.3em]">{t.hero.date}</p>
+                        </div>
+                        <button
+                            type="button"
+                            onClick={togglePlay}
+                            tabIndex={-1}
+                            aria-hidden="true"
+                            className="flex items-center gap-1.5 font-serif italic text-white/60 hover:text-white/90 text-sm tracking-wider transition-colors duration-300"
+                        >
+                            <Music size={12} className={playing ? "animate-pulse" : ""} />
                             {playing ? t.hero.pauseSong : t.hero.playSong}
-                        </span>
-                    </button>
-
-                    <p className="font-serif text-white/80 text-lg md:text-xl tracking-[0.3em]">{t.hero.date}</p>
+                        </button>
+                    </div>
 
                     {/* Línea divisora */}
                     <div className="h-px w-64 md:w-96 bg-white/30" />
