@@ -25,7 +25,7 @@ export default function Hero() {
     const [time, setTime] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
     const [playing, setPlaying] = useState(false);
     const [audio] = useState(() =>
-        typeof window !== "undefined" ? new Audio("https://res.cloudinary.com/dsrxyg5rn/video/upload/TU_CANCION.mp3") : null,
+        typeof window !== "undefined" ? new Audio("https://res.cloudinary.com/dsrxyg5rn/video/upload/v1793902198/How_long_will_I_love_you_-_Jon_Boden_Sam_Sweeney_Ben_Coleman_xcazoy.mp3") : null,
     );
 
     useEffect(() => {

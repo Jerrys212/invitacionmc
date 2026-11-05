@@ -3,7 +3,7 @@
 @theme {
     --font-playfair: var(--font-playfair-display); 
     --font-lora: var(--font-lora); 
-    --font-display: var(--font-great-vibes);
+    --font-display: var(--font-pinyon-script);
     --font-serif: var(--font-cormorant);
     --font-body: var(--font-amiri);
     --color-burgundy-dark: #5c1a1a;
@@ -11,6 +11,46 @@
     --color-tan: #c4a882;
     --color-cream: #e8d5b0;
     --color-ivory: #f5f0e8;
+    --color-flag-green: #006847;
+    --color-flag-red: #ce1126;
+    --color-flag-blue: #0a3161;
+    --color-flag-white: #ffffff;
+}
+
+@layer base {
+    button,
+    a,
+    summary,
+    label[for],
+    [role="button"] {
+        cursor: pointer;
+    }
+
+    button:disabled,
+    [aria-disabled="true"] {
+        cursor: not-allowed;
+    }
+}
+
+@utility bg-burgundy-texture {
+    background-color: var(--color-burgundy-dark);
+    background-image: url("/fondo-invitacion.jpeg");
+    background-size: cover;
+    background-position: center;
+}
+
+@utility bg-ivory-texture {
+    background-color: var(--color-ivory);
+    background-image: url("/fondo-marfil.avif");
+    background-size: cover;
+    background-position: center;
+}
+
+@utility bg-dresscode-texture {
+    background-color: var(--color-burgundy-dark);
+    background-image: url("/fondo-dresscode.jpg");
+    background-size: cover;
+    background-position: center;
 }
 
 ::selection {

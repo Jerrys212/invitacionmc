@@ -9,7 +9,7 @@ export default function Footer() {
     const currentYear = new Date().getFullYear();
 
     return (
-        <footer className="w-full bg-burgundy-dark px-8 py-12 flex flex-col items-center gap-8">
+        <footer className="w-full bg-burgundy-texture px-8 py-12 flex flex-col items-center gap-8">
             {/* separador superior */}
             <Reveal variant="line" className="flex items-center gap-4 w-full max-w-sm">
                 <div className="h-px flex-1 bg-ivory/20" />

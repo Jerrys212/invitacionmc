@@ -46,7 +46,7 @@ export default function Rsvp({ pases }: RsvpProps) {
     }
 
     return (
-        <section className="min-h-screen w-full bg-ivory flex flex-col items-center justify-center px-8 py-24 gap-12">
+        <section className="min-h-screen w-full bg-ivory-texture flex flex-col items-center justify-center px-8 py-24 gap-12">
             {/* título */}
             <Reveal variant="up" className="flex flex-col items-center gap-3 text-center">
                 <p className="font-serif text-burgundy-dark/40 text-sm md:text-xl lg:text-2xl tracking-[0.4em] uppercase">{t.rsvp.eyebrow}</p>
@@ -71,9 +71,9 @@ export default function Rsvp({ pases }: RsvpProps) {
                     </p>
                 </div>
                 <ul className="font-serif text-burgundy-dark/80 text-base md:text-lg leading-relaxed space-y-4 list-disc list-inside marker:text-burgundy-dark/40">
-                    <li>{t.rsvp.note1}</li>
-                    <li>{t.rsvp.note2}</li>
-                    <li>{t.rsvp.note3}</li>
+                    {t.rsvp.notes.map((note) => (
+                        <li key={note}>{note}</li>
+                    ))}
                 </ul>
             </Reveal>
 

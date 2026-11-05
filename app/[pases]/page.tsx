@@ -1,9 +1,10 @@
 import DressCode from "@/src/components/DressCode";
 import Footer from "@/src/components/Footer";
 import Gallery from "@/src/components/Galery";
+import Gift from "@/src/components/Gift";
 import Hero from "@/src/components/Hero";
+import Location from "@/src/components/Location";
 import Lodgement from "@/src/components/Lodgement";
-import NoKids from "@/src/components/Nokids";
 import Parents from "@/src/components/Parents";
 import Rsvp from "@/src/components/Rsvp";
 import Timeline from "@/src/components/Timeline";
@@ -24,6 +25,8 @@ export default async function Home({ params }: Props) {
 
             <Parents />
 
+            <Location />
+
             <Us />
 
             <Timeline />
@@ -32,11 +35,11 @@ export default async function Home({ params }: Props) {
 
             <Visit />
 
-            <NoKids />
+            <Lodgement />
+
+            <Gift />
 
             <Rsvp pases={pases} />
-
-            <Lodgement />
 
             <Gallery />
 

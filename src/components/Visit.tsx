@@ -29,7 +29,7 @@ export default function Visit() {
     const { t } = useLanguage();
 
     return (
-        <section className="min-h-screen w-full bg-ivory/80 flex flex-col items-center justify-center px-8 py-24 gap-16">
+        <section className="min-h-screen w-full bg-ivory-texture flex flex-col items-center justify-center px-8 py-24 gap-16">
             {/* título */}
             <Reveal variant="up" className="flex flex-col items-center gap-3 text-center">
                 <p className="font-serif text-burgundy-dark text-sm md:text-xl tracking-[0.4em] uppercase">{t.visit.eyebrow}</p>

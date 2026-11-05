@@ -1,49 +1,51 @@
 "use client";
 
 import Image from "next/image";
-import Reveal from "./Reveal";
 import { useLanguage } from "@/src/contexts/LanguageContext";
+import { OrnamentFrame } from "./Ornament";
+import Reveal from "./Reveal";
 
 export default function DressCode() {
-    const { locale } = useLanguage();
-
-    const dkSrc = locale === "en" ? "/dresscodeen.png" : "/dresscodedk.png";
-    const mbSrc = locale === "en" ? "/dresscodemb-en.png" : "/dresscodemb.png";
-    const alt = locale === "en" ? "Dress code" : "imagen dresscode";
+    const { t } = useLanguage();
 
     return (
-        <section
-            className="min-h-screen w-full flex items-center justify-center px-4 sm:px-8 py-12 sm:py-16"
-            style={{
-                backgroundImage: "url('/bg3.jpg')",
-                backgroundSize: "cover",
-                backgroundPosition: "center",
-            }}
-        >
-            {/* Desktop / tablet: 1920×1280 */}
-            <Reveal variant="scale" className="hidden sm:block w-full max-w-3xl">
-                <Image
-                    src={dkSrc}
-                    width={1920}
-                    height={1280}
-                    alt={alt}
-                    sizes="(max-width: 1024px) 70vw, 800px"
-                    className="w-full h-auto object-contain"
-                    priority
-                />
-            </Reveal>
+        <section className="min-h-screen w-full bg-dresscode-texture flex items-center justify-center px-4 sm:px-8 py-16">
+            <Reveal variant="scale" className="w-full max-w-4xl bg-ivory-texture shadow-2xl px-6 sm:px-12 py-12 sm:py-16 flex flex-col items-center gap-10">
+                <div className="flex flex-col items-center gap-3 text-center">
+                    <h2 className="font-serif text-black/85 text-4xl md:text-6xl tracking-widest uppercase">{t.dressCode.heading}</h2>
+                    <div className="flex items-center gap-3 text-black/40">
+                        <div className="h-px w-16 md:w-32 bg-black/40" />
+                        <span className="font-serif text-xl">❦</span>
+                        <div className="h-px w-16 md:w-32 bg-black/40" />
+                    </div>
+                </div>
 
-            {/* Mobile: 1280×1920 */}
-            <Reveal variant="scale" className="block sm:hidden w-full max-w-sm">
-                <Image
-                    src={mbSrc}
-                    width={1280}
-                    height={1920}
-                    alt={alt}
-                    sizes="90vw"
-                    className="w-full h-auto object-contain"
-                    priority
-                />
+                <div className="flex flex-col sm:flex-row items-center gap-10 sm:gap-12 w-full">
+                    <div className="w-48 sm:w-2/5 shrink-0">
+                        <Image
+                            src="/dresscode-couple.png"
+                            alt=""
+                            width={440}
+                            height={650}
+                            sizes="(max-width: 640px) 12rem, 320px"
+                            className="w-full h-auto mix-blend-multiply"
+                        />
+                    </div>
+
+                    <div className="flex flex-col items-center gap-8 flex-1">
+                        <div className="flex flex-col items-center w-56 md:w-72 text-black/70">
+                            <OrnamentFrame />
+                            <p className="font-serif text-black/85 text-4xl md:text-5xl tracking-widest uppercase py-1">{t.dressCode.style}</p>
+                            <OrnamentFrame className="rotate-180" />
+                        </div>
+
+                        <ul className="font-serif text-black/85 text-lg md:text-2xl leading-relaxed space-y-4 list-disc pl-6 marker:text-black/60">
+                            {t.dressCode.rules.map((rule) => (
+                                <li key={rule}>{rule}</li>
+                            ))}
+                        </ul>
+                    </div>
+                </div>
             </Reveal>
         </section>
     );
