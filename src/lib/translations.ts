@@ -6,6 +6,8 @@ export const translations = {
             min: "MIN",
             sec: "SEG",
             date: "19 · diciembre · 2026",
+            playSong: "Escucha nuestra canción",
+            pauseSong: "Pausar canción",
         },
         parents: {
             blessing: "Con la bendición de nuestras familias",
@@ -140,6 +142,8 @@ export const translations = {
             min: "MIN",
             sec: "SEC",
             date: "December 19 · 2026",
+            playSong: "Play our song",
+            pauseSong: "Pause song",
         },
         parents: {
             blessing: "With the blessing of our families",
